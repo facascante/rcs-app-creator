@@ -1,0 +1,14 @@
+{
+  "type": "service_account",
+  "project_id": "devagent-212002",
+  "private_key_id": "05ad4293d31cfb2adae35b6bc76f47b268a6405e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCrvcOxkMnD/ZGu\nGmfxx/MWEwpF0BzcSridabkomxC8SpUB65Id6qwXFgLbvSbT5cOv+g+ZcfZXAZ5J\n02z8jkzkhb7qvC2kqrwO2sdCjjIcXh1sKXvESe8FgLkgCEo7k5NH/u0W7tAL+kZ4\n37ddNb+qAfWRiAXPmGI0a96rFORYGhMZpJV+e+oZ4apbv2R8I4sLRLQQjGacxsg2\ngvw21zYlCz8ApGqp8B5tkdw4npuKvM1+s97/gkhKSR+D4awaiuazLSGXkjoGL9tA\n4VqSRhzUIGeqyO9x9cd8TdG4/64EoiLR9toZKxM6HphdLR+6ihbHgF2RKPtRZ2wm\npwdRqETjAgMBAAECggEARnHmTXV4bX4bPXDzZgeAPHO+6Pf+fpXfuCHfozpH2RQ2\nnr0ECGV0BVwv+/ZQcOZ0KEDIGUbXpsSxKtMgh0/PVoVN1HcvubWWwfkXdsNg5qXs\nJ6u0asVw167/QJZl7J4R8ZwtoBSBHgig03/gdMlRPuji07kZuRdmYN5GTaKaL1CF\nrOCtQ8haDLN5oae9kRJs3p38oTTBUs6IQfY3cETKBr9dvEunp4q6N28y8CkmaOs+\nUircPYzbp9fPeyogbTEsBBa/R7X8rFMdBqvOeJmHiXUemLHWaRr3KJ5oRpLXKODS\nBxKSAUyJluhjmufoU4Gn1Bg/o3M7os2lZqv/D7Ni0QKBgQDp8G/1iCZGDE6dYJcs\nXEWHZoFuS39utQDbma2HAsi3UZWDHv6q5qdLAasvCzCL6+6zph7ZkPvnCCfaqnaX\n5zeIaNpBtJv3u1x0bh8IhK5dxtgILfRgxIoN79w60R1elV3eBxP9dfVm+cXx3duz\nKPD07xj+QyCpg6k2barEXQh5TwKBgQC778wFkcFUZEvaU5NXrSIMPhh5LuCRD18f\nLPOwmpSFTl7uVoowj+TpaxZw2F5mTIde4ASXCToM4IET6Qo2vNyy8E3aNNk6mDtJ\nK57nGtRx+0cdjSr1nPiH5iyr+wisAHmgp0ObNw9mjCtfZ5J0hD84ryFECJTtZEqA\nkjaLo4VuLQKBgQDoWOCqCa6R1fliv6OF8KMx5vJYXG3Vw7p1YX4C4RX/VO1dTLR9\ngxbXHXIrCD8QSaVMEosDZcd7YBNNUA73sjLqrdFQfxSFiTY7gYAbEsSn6S15ekME\ntU+0pe2jETzNSybutTL6g2TYAO3D2qkxmVEwxCSbrIpNMrIml+eKnigjawKBgQCJ\niyqqOM5hUTYih2Aintd4VknbBu/buoBHdMK00a05Eu5vSG7Cs8049+Lom7Ia9I9u\nZE13rI0Lt5NAWyHahcaQP0b7GAqT064wEvis8vngoaKegh6au1M5QsAW7haeq4pY\nhZH5Gwbuak+j9008cT1D4whZnl5Aj1HnXxsEf5y70QKBgQCE+6c+CSOvblYaI8N9\nfIbFTMHwvGPIXqQUTcTt8uuYGXEJoX5ut/EFr3KffxhTTSaCAcgrgLupfjLYFmwM\nBtl5z8JAbzwwO2eCWFcp7ll2xqeGyFvXgrm8uzRtLbtJQIOLhCc/9Yyx8wCz6+rF\ngqgKZWrbGJb/kNBq++bX72Enxw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dev-agent-sa@devagent-212002.iam.gserviceaccount.com",
+  "client_id": "117798549698869938324",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dev-agent-sa%40devagent-212002.iam.gserviceaccount.com",
+  "keyFilename": "/Users/TimeLord/Documents/rcs-agent-app-creator/config/default.json",
+  "scopes" : "https://www.googleapis.com/auth/rcsbusinessmessaging"
+}
