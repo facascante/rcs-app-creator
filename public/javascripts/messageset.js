@@ -136,6 +136,7 @@ $(document).ready(function () {
 
       elTab.find( "input.title" ).on('change', function(){
         elAnchor.find("h3").html($(this).val());
+        updateTrigger();
       });
       elTab.find( "input.question" ).on('change', function(){
         elAnchor.find("p").html($(this).val());
