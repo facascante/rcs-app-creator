@@ -9,6 +9,6 @@
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dev-agent-sa%40devagent-212002.iam.gserviceaccount.com",
-  "keyFilename": "/Users/TimeLord/Documents/rcs-agent-app-creator/config/default.json",
+  "keyFilename": "/home/burstsms_rcs/rcs-app-creator/config/default.json",
   "scopes" : "https://www.googleapis.com/auth/rcsbusinessmessaging"
 }
