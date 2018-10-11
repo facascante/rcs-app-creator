@@ -7,7 +7,8 @@ $(document).ready(function () {
       tabCtr = mset.length;
       mset.push({suggestions:[]});
 
-      var elAnchor = $('<a class="nav-link" id="v-pills-'+ tabCtr +'-tab" data-toggle="tab" href="#v-pills-'+ tabCtr +'" role="tab" aria-controls="v-pills-'+ tabCtr +'"><h3>[Title Goes Here]</h3><p>[Question Goes Here]</p></a>'); 
+      var elAnchor = $('<a class="nav-link" id="v-pills-'+ tabCtr +'-tab" data-toggle="tab" href="#v-pills-'+ tabCtr +'" role="tab" aria-controls="v-pills-'+ tabCtr +
+      '"><h3>[Title Goes Here]</h3><p><button type="button"class="btn deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn moveset"><i class="fas fa-grip-vertical"></i></button>[Question Goes Here]</p></a>'); 
       var elTab = $('<div class="tab-pane" id="#v-pills-' + tabCtr + '" role="tabpanel" aria-labelledby="#v-pills-'+ tabCtr +'-tab">' +
             '<div class="form-group">' +
                 '<label for="messageTitle">Title</label>' +
@@ -187,7 +188,11 @@ $(document).ready(function () {
         elTab.parent().find( "div.tab-pane" ).hide();
         elTab.show();
       });
-
+      elAnchor.find("button.deleteset").on('click', function(){
+        $(this).parent().parent().remove();
+        elTab.remove();
+        updateTrigger();
+      });
       elTab.find( "input.title" ).on('change', function(){
         elAnchor.find("h3").html($(this).val());
         updateTrigger();
