@@ -199,6 +199,11 @@ $(document).ready(function () {
       });
       elTab.find( "input.question" ).on('change', function(){
         elAnchor.find("p").html('<button type="button"class="btn deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn moveset"><i class="fas fa-grip-vertical"></i></button> ' +$(this).val());
+        elAnchor.find("button.deleteset").on('click', function(){
+            $(this).parent().parent().remove();
+            elTab.remove();
+            updateTrigger();
+          });
       });
       elTab.find( "button.suggestion" ).on('click', function(){
          mset[tabCtr].suggestions.push({});
