@@ -198,7 +198,7 @@ $(document).ready(function () {
         updateTrigger();
       });
       elTab.find( "input.question" ).on('change', function(){
-        elAnchor.find("p").html($(this).val());
+        elAnchor.find("p").html('<button type="button"class="btn deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn moveset"><i class="fas fa-grip-vertical"></i></button> ' +$(this).val());
       });
       elTab.find( "button.suggestion" ).on('click', function(){
          mset[tabCtr].suggestions.push({});
