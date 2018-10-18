@@ -11,16 +11,19 @@
   </head>
   <body>
     <div>
-      <form method="post">
+      
           <div class="form-row align-items-center mx-sm-3 mb-1">
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2">SEND INVITE</button>
-              </div>
-            <div class="col-auto">
-              <label class="sr-only" for="inlineFormInput">Name</label>
-              <input type="text" class="form-control mb-2" id="mobilePhone" name="msisdn" aria-describedby="mobilePhoneHelp" placeholder="Mobile Phone">
-            </div>
+              <form method="post">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">SEND INVITE</button>
+                  </div>
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInput">Name</label>
+                  <input type="text" class="form-control mb-2" id="mobilePhone" name="msisdn" aria-describedby="mobilePhoneHelp" placeholder="Mobile Phone">
+                </div>
+              </form>
           </div>
+          <form method="post">
           <div class="form-row align-items-center mx-sm-3 mb-1">
             <div class="col-auto">
                 <button type="button" class="btn btn-primary btn-light mb-2" id="btnMessageSet">ADD MESSAGE SET</button>
@@ -35,7 +38,15 @@
                 <div class="tab-content" id="v-pills-tabContent">
                 </div>
               </div>
-            </div>
+          </div>
+          <div class="form-row mx-sm-3 mb-1">
+              <div class="col-6 float-right">
+                  <button type="reset" class="btn btn-warning mb-2">CANCEL</button>
+                  <button type="submit" class="btn btn-success mb-2">DONE</button>
+                </div>
+              
+          </div>
+
         </form>
   </body>
 </html>
