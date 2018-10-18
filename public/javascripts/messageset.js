@@ -7,11 +7,11 @@ $(document).ready(function () {
       tabCtr = mset.length;
       mset.push({suggestions:[]});
 
-      var elAnchor = $('<a class="nav-link" id="v-pills-'+ tabCtr +'-tab" data-toggle="tab" href="#v-pills-'+ tabCtr +'" role="tab" aria-controls="v-pills-'+ tabCtr +
-      '"><h3>[Title Goes Here]</h3><p><button type="button"class="btn deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn moveset"><i class="fas fa-grip-vertical"></i></button>[Question Goes Here]</p></a>'); 
+      var elAnchor = $('<li class="nav-item"><a class="nav-link" id="v-pills-'+ tabCtr +'-tab" data-toggle="tab" href="#v-pills-'+ tabCtr +'" role="tab" aria-controls="v-pills-'+ tabCtr +
+      '"><h3>[Title Goes Here]</h3></a><p><button type="button"class="btn btn-sm deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn btn-sm moveset"><i class="fas fa-grip-vertical"></i></button>[Question Goes Here]</p></li>'); 
       var elTab = $('<div class="tab-pane" id="#v-pills-' + tabCtr + '" role="tabpanel" aria-labelledby="#v-pills-'+ tabCtr +'-tab">' +
             '<div class="form-group">' +
-                '<label for="messageTitle">Title</label>' +
+                '<label for="messageTitle">Title'+tabCtr+'</label>' +
                 '<input type="text" class="form-control title" id="mset['+tabCtr+'].title">' +
             '</div>' +
             '<div class="form-group">' +
@@ -39,6 +39,7 @@ $(document).ready(function () {
                 '<input type="text" class="form-control" name="mset['+tabCtr+'].suggestions[].label">' +
                 '<small class="form-text text-muted text-sm-center">Label</small>' +
                 '</div>' +
+                '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div>' +
                 '<div class="col-3">' +
                 '<select class="form-control action" name="mset['+tabCtr+'].suggestions[].action">' 
                 + '<option value="Dial">Dial Number</option>' 
@@ -53,7 +54,7 @@ $(document).ready(function () {
         var elUserSuggestion = $('<div class="col-3">' +
                 '<input type="text" class="form-control" name="mset['+tabCtr+'].suggestions[].label">' +
                 '<small class="form-text text-muted text-sm-center">Label</small>' +
-                '</div>' +
+                '</div><div class="col-1"></div><div class="col-1"></div><div class="col-1"></div>' +
                 '<div class="col-3">' +
                 '<select class="form-control type" name="mset['+tabCtr+'].suggestions[].userinfo">' 
                 + '<option value="Name">Name</option>' 
@@ -68,7 +69,7 @@ $(document).ready(function () {
         var elImageSuggestion = $('<div class="col-3">' +
                 '<input type="text" class="form-control" name="mset['+tabCtr+'].suggestions[].name">' +
                 '<small class="form-text text-muted text-sm-center">Name</small></div>' +
-                '<div class="col-3">' +
+                '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
                 '<input type="text" class="form-control" name="mset['+tabCtr+'].suggestions[].description">' +
                 '<small class="form-text text-muted text-sm-center">Description</small>' +
                 '</div>' +
@@ -87,7 +88,7 @@ $(document).ready(function () {
         + '</select><small class="form-text text-muted text-sm-center">Trigger</small></div>');
         
 
-        var elSelectSuggestion = $('<div class="col-1.5"><button type="button"class="btn delete"><i class="fas fa-trash"></i></button> <button type="button" class="btn move"><i class="fas fa-grip-vertical"></i></button></div><div class="col-3">'
+        var elSelectSuggestion = $('<div class="col-1"><button type="button"class="btn btn-sm delete"><i class="fas fa-trash"></i></button> <button type="button" class="btn btn-sm move"><i class="fas fa-grip-vertical"></i></button></div><div class="col-3">'
         +'<select class="form-control type" name="mset['+tabCtr+'].suggestions[].type">'
         + '<option value="Text">Text Suggestion</option>' 
         + '<option value="Action">Action Suggestion</option>' 
@@ -181,7 +182,7 @@ $(document).ready(function () {
             updateTrigger();
             
         });
-
+        console.log("chito");
       $("#v-pills-tab").append( elAnchor );
       $("#v-pills-tabContent").append( elTab );
       elAnchor.on('click', function(){
@@ -191,14 +192,14 @@ $(document).ready(function () {
       elAnchor.find("button.deleteset").on('click', function(){
         $(this).parent().parent().remove();
         elTab.remove();
-        updateTrigger();
+        //updateTrigger();
       });
       elTab.find( "input.title" ).on('change', function(){
         elAnchor.find("h3").html($(this).val());
         updateTrigger();
       });
       elTab.find( "input.question" ).on('change', function(){
-        elAnchor.find("p").html('<button type="button"class="btn deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn moveset"><i class="fas fa-grip-vertical"></i></button> ' +$(this).val());
+        elAnchor.find("p").html('<button type="button"class="btn btn-sm deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn btn-sm moveset"><i class="fas fa-grip-vertical"></i></button> ' +$(this).val());
         elAnchor.find("button.deleteset").on('click', function(){
             $(this).parent().parent().remove();
             elTab.remove();
