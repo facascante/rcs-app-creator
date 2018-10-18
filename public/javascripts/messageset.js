@@ -13,25 +13,25 @@ $(document).ready(function () {
       tabCtr = getID();
 
       var elAnchor = $('<li class="nav-item"><a class="nav-link" id="v-pills-'+ tabCtr +'-tab" data-toggle="tab" href="#v-pills-'+ tabCtr +'" role="tab" aria-controls="v-pills-'+ tabCtr +
-      '"><h3>[Title Goes Here]</h3></a><p><button type="button"class="btn btn-sm deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn btn-sm moveset"><i class="fas fa-grip-vertical"></i></button>[Question Goes Here]</p></li>'); 
+      '"><h3 >[Title Goes Here]</h3></a><p><button type="button"class="btn btn-sm deleteset"><i class="fas fa-trash"></i></button> <button type="button" class="btn btn-sm moveset"><i class="fas fa-grip-vertical"></i></button>[Question Goes Here]</p></li>'); 
       var elTab = $('<div class="tab-pane" id="#v-pills-' + tabCtr + '" role="tabpanel" aria-labelledby="#v-pills-'+ tabCtr +'-tab">' +
             '<div class="form-group">' +
                 '<label for="messageTitle">Title : '+tabCtr+'</label>' +
-                '<input type="text" class="form-control title" name="'+tabCtr+'.title">' +
+                '<input type="text" class="form-control title" name="'+tabCtr+'.set_title">' +
             '</div>' +
             '<div class="form-group">' +
                 '<label for="messageQuestion">Question</label>' +
-                '<input type="text" class="form-control question" name="'+tabCtr+'.question">' +
+                '<input type="text" class="form-control question" name="'+tabCtr+'.set_question">' +
             '</div>' +
             '<div class="form-group">' +
                 '<label for="messageQuestion">Options</label>' +
                 '<hr/>' +
             '</div>' +
-            '<div class="form-group col-auto suggestions">' +
+            '<div class="form-group col-auto suggestions" style="height: 450px; width: auto; overflow-y: scroll; border:1px solid gray">' +
 
             '</div>'+
             '<div class="form-group">' +
-                '<button type="button" class="btn btn-primary btn-light mb-2 suggestion">Add suggestion</button>' +
+                '<button type="button" class="btn btn-primary btn-light mb-2 suggestion" name="'+tabCtr+'" >Add suggestion</button>' +
             '</div>'+
         '</div>');
 
@@ -59,6 +59,7 @@ $(document).ready(function () {
           });
       });
       elTab.find( "button.suggestion" ).on('click', function(){
+         tabCtr = $(this).attr("name");
          sugCtr = getID();
          var elTextSuggestion = $('<div class="col-3">' +
                 '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.label">' +
@@ -97,7 +98,7 @@ $(document).ready(function () {
                 );
         
         var elImageSuggestion = $('<div class="col-3">' +
-                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.name">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.label">' +
                 '<small class="form-text text-muted text-sm-center">Name</small></div>' +
                 '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
                 '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.description">' +
@@ -131,17 +132,17 @@ $(document).ready(function () {
         +'<small class="form-text text-muted text-sm-center">Phone Number</small></div>');
 
         var elViewLocation = $('<div class="col-3">'
-        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.LatLong">'
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.latlong">'
         +'<small class="form-text text-muted text-sm-center">LatLong</small></div>' + 
         '<div class="col-3">'
-        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.Query">'
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.query">'
         +'<small class="form-text text-muted text-sm-center">Query</small></div>');
 
         var elCalendarEvent = $('<div class="col-3">'
-        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.startTime">'
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.start">'
         +'<small class="form-text text-muted text-sm-center">Start Time</small></div>' + 
         '<div class="col-3">'
-        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.endTime">'
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.end">'
         +'<small class="form-text text-muted text-sm-center">End Time</small></div>' +
         '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">'
         +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.description">'
@@ -225,7 +226,7 @@ $(document).ready(function () {
       var updateTrigger = function(){
         $("#v-pills-tabContent").find("select.trigger").html("");
         $( "a.nav-link > h3" ).each(function( index ) {
-            $("#v-pills-tabContent").find("select.trigger").append("<option>" + $(this).html()+ "</option");
+            $("#v-pills-tabContent").find("select.trigger").append("<option value='" + $(this).parent().attr("aria-controls").replace("v-pills-","") +"'>" + $(this).html()+ "</option");
         });
       };
       updateTrigger();

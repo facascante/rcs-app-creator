@@ -8,6 +8,8 @@ var emitter = require('sharky');
 
 require('./core/init')(emitter);
 require('./core/sender')(emitter);
+require('./core/campaign')(emitter);
+require('./core/receiver')(emitter);
 
 var app = express();
 

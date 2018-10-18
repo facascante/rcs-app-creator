@@ -8,6 +8,7 @@
   "dependencies": {
     "@google-cloud/datastore": "^1.4.2",
     "@google-cloud/pubsub": "^0.20.0",
+    "async": "^2.6.1",
     "config": "^2.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -16,6 +17,8 @@
     "googleapis": "^29.0.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
-    "sharky": "^0.1.0"
+    "randomstring": "^1.1.5",
+    "sharky": "^0.1.0",
+    "uuid": "^3.3.2"
   }
 }

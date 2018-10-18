@@ -15,7 +15,6 @@ module.exports = function(emitter){
       );
     }
     else{
-
       var convertToJson = function(items){
 
         var doc = {set : {}};
@@ -44,11 +43,55 @@ module.exports = function(emitter){
 
 
         });
-        console.log(JSON.stringify(doc));
+        return doc;
 
       };
-      convertToJson(req.body);
-      res.render('index', { title: 'Express' });
+      if(JSON.stringify(req.body) != "{}"){
+        var docs = convertToJson(req.body);
+        emitter.invokeHook('campaign::create',
+            {	
+              campaign: docs
+            },
+            function(_err,content){
+
+              var set = 0;
+              Object.keys(docs.set).forEach(function(key) {
+                if(set == 0){
+                  set = key;
+                }
+              });
+              
+              emitter.invokeHook('campaign::set::search',
+                {	
+                  set_name: set
+                },
+                function(_err,suggestions){
+                  console.log('campaign::set::search',set,suggestions);
+                  if(suggestions.length){
+                  emitter.invokeHook('rbm::message::set::send',
+                    {	
+                      set_question: suggestions[0].set_question,
+                      suggestions: suggestions,
+                      msisdn: "+61411449797"
+                    },
+                    function(_err,suggestions){
+                      console.log("hope it works");
+                      res.render('index');
+                    }
+                  );
+                  }
+                  else{
+                    res.render('index');
+                  }
+                }
+              );
+              
+        });
+      }
+      else{
+        res.render('index');
+      }
+      
     }
   });
   return router;
