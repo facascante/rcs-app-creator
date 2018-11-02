@@ -204,7 +204,7 @@ module.exports = function(emitter){
               if(isNaN(userdata[i]) && (userdata[i].indexOf("|") != -1)){
                 var splitcontent = userdata[i].split("|");
                 if(splitcontent.length === 4){
-                  userdata[i] = splitcontent[3] + " X "+ splitcontent[1] + " $" + splitcontent[2];
+                  userdata[i] = splitcontent[3] + " X "+ splitcontent[1] + " $" + splitcontent[2] + "\n";
                 }
               }
               else{

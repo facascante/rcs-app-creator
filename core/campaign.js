@@ -116,6 +116,7 @@ module.exports = function(emitter){
           userdata.data[suggestion.set_title] = suggestion.label + '|' + suggestion.description + '|' + suggestion.price + '|' + options.quantity;
           if(options.quantity && suggestion.price){
             userdata.data.total+= (suggestion.price * Number(options.quantity));
+            userdata.data[suggestion.set_title] = suggestion.label + '|' + suggestion.description + '|' + (Number(suggestion.price) * Number(options.quantity)) + '|' + options.quantity;
           }
           else if(suggestion.price){
             userdata.data.total+=suggestion.price;
