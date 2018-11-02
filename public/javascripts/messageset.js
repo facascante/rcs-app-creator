@@ -99,15 +99,40 @@ $(document).ready(function () {
         
         var elImageSuggestion = $('<div class="col-3">' +
                 '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.label">' +
-                '<small class="form-text text-muted text-sm-center">Name</small></div>' +
+                '<small class="form-text text-muted text-sm-center">Label</small></div>' +
                 '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
                 '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.description">' +
                 '<small class="form-text text-muted text-sm-center">Description</small>' +
                 '</div>' +
                 '<div class="col-3">' +
-                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.fileUrl">' +
-                '<small class="form-text text-muted text-sm-center">fileUrl</small></div>' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.title">' +
+                '<small class="form-text text-muted text-sm-center">Title</small></div>' +
                 '<div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.fileUrl">' +
+                '<small class="form-text text-muted text-sm-center">fileUrl</small>' +
+                '</div>' +
+                '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.thumbnailUrl">' +
+                '<small class="form-text text-muted text-sm-center">thumbnailUrl</small>' +
+                '</div>'
+                
+                );
+        
+        var elProductSuggestion = $('<div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.label">' +
+                '<small class="form-text text-muted text-sm-center">Label</small></div>' +
+                '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.description">' +
+                '<small class="form-text text-muted text-sm-center">Description</small>' +
+                '</div>' +
+                '<div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.price">' +
+                '<small class="form-text text-muted text-sm-center">Price</small></div>' +
+                '<div class="col-3">' +
+                '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.fileUrl">' +
+                '<small class="form-text text-muted text-sm-center">fileUrl</small>' +
+                '</div>' +
+                '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">' +
                 '<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.thumbnailUrl">' +
                 '<small class="form-text text-muted text-sm-center">thumbnailUrl</small>' +
                 '</div>'
@@ -124,6 +149,7 @@ $(document).ready(function () {
         + '<option value="Text">Text Suggestion</option>' 
         + '<option value="Action">Action Suggestion</option>' 
         + '<option value="Image">Image Suggestion</option>' 
+        + '<option value="Product">Product Suggestion</option>' 
         + '<option value="User">User Profile Suggestion</option>' 
         + '</select><small class="form-text text-muted text-sm-center">Type</small></div>');
 
@@ -132,9 +158,12 @@ $(document).ready(function () {
         +'<small class="form-text text-muted text-sm-center">Phone Number</small></div>');
 
         var elViewLocation = $('<div class="col-3">'
-        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.latlong">'
-        +'<small class="form-text text-muted text-sm-center">LatLong</small></div>' + 
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.latitude">'
+        +'<small class="form-text text-muted text-sm-center">Latitude</small></div>' + 
         '<div class="col-3">'
+        +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.longitude">'
+        +'<small class="form-text text-muted text-sm-center">Longitude</small></div>' + 
+        '<div class="col-1"></div><div class="col-1"></div><div class="col-1"></div><div class="col-3">'
         +'<input type="text" class="form-control" name="'+tabCtr+'.' + sugCtr+ '.query">'
         +'<small class="form-text text-muted text-sm-center">Query</small></div>');
 
@@ -200,6 +229,12 @@ $(document).ready(function () {
                 elTTab.append(elSelectSuggestion.clone(true,true));
                 elTTab.append(elSelectTrigger.clone(true,true));
                 elTTab.append(elImageSuggestion.clone(true,true));
+                    break;
+                case 'Product' : 
+                elSelectSuggestion.find("select").val($(this).val());
+                elTTab.append(elSelectSuggestion.clone(true,true));
+                elTTab.append(elSelectTrigger.clone(true,true));
+                elTTab.append(elProductSuggestion.clone(true,true));
                 
                     break;
                 case 'User' : 

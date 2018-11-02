@@ -39,12 +39,15 @@ module.exports = function(emitter){
                 label: suggestions[skey].label,
                 action: suggestions[skey].action,
                 userinfo: suggestions[skey].userinfo,
-                latlong: suggestions[skey].latlong,
+                latitude: suggestions[skey].latitude,
+                longitude: suggestions[skey].longitude,
                 phone: suggestions[skey].phone,
                 query: suggestions[skey].query,
                 start: suggestions[skey].start,
                 end: suggestions[skey].end,
                 description: suggestions[skey].description,
+                title: suggestions[skey].title,
+                price: suggestions[skey].price,
                 url: suggestions[skey].url,
                 fileUrl: suggestions[skey].fileUrl,
                 thumbnailUrl: suggestions[skey].thumbnailUrl
@@ -86,6 +89,69 @@ module.exports = function(emitter){
     }
 
   });
+
+  emitter.registerHook('userdata::create',function(options,finish){
+
+    var executeFunction = function(){
+
+      emitter.invokeHook('userdata::set::search',
+        {	
+          msisdn: options.msisdn
+        },
+        function(_err,dbuserdata){
+          var id = options.msisdn;
+          const userdataKey = emitter._datastore.key(['UserData', id]);
+          let userdata = {
+            key: userdataKey,
+            data: {
+              id: id,
+              total:0
+            }
+          };
+          if(dbuserdata){
+            userdata.data = dbuserdata
+          }
+
+          var suggestion = options.suggestion;
+          userdata.data[suggestion.set_title] = suggestion.label + '|' + suggestion.description + '|' + suggestion.price + '|' + options.quantity;
+          if(options.quantity && suggestion.price){
+            userdata.data.total+= (suggestion.price * Number(options.quantity));
+          }
+          else if(suggestion.price){
+            userdata.data.total+=suggestion.price;
+          }
+          console.log(userdata);
+          emitter._datastore
+          .save(userdata)
+          .then( results => {
+            finish(null,results);
+          })
+          .catch(err => {
+            finish(err);
+          });
+          
+      });
+    };
+
+    if(!emitter._authClient){
+      emitter.invokeHook('init::datastore',
+        {	
+          projectId: config.project_id,
+          keyFilename: config.keyFilename
+        },
+        function(_err,datastore){
+          emitter._datastore = datastore;
+          executeFunction();
+        }
+      );
+    }
+    else{
+      executeFunction();
+    }
+
+
+  });
+
 
   emitter.registerHook('campaign::suggestion::response::search',function(options,finish){
 
@@ -165,5 +231,43 @@ module.exports = function(emitter){
 
 
   });
+  emitter.registerHook('userdata::set::search',function(options,finish){
 
+    var executeFunction = function(){
+      var msisdn  = options.msisdn;
+
+      const query = emitter._datastore
+        .createQuery('UserData')
+        .filter('id', '=', msisdn);
+
+        emitter._datastore.runQuery(query).then((results) => {
+          console.log("results".results);
+          let matchingUserData = results[0];
+
+          if (matchingUserData.length > 0) {
+              console.log("matchingUserData".matchingUserData);
+              finish(null,matchingUserData[0]);
+          } else {
+            finish("msisdn not found: " + msisdn);
+          }
+      });
+    };
+
+      if(!emitter._authClient){
+        emitter.invokeHook('init::datastore',
+          {	
+            projectId: config.project_id,
+            keyFilename: config.keyFilename
+          },
+          function(_err,_datastore){
+            executeFunction();
+          }
+        );
+      }
+      else{
+        executeFunction();
+      }
+
+
+  });
 };
